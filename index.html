@@ -6,131 +6,572 @@
 <title>Sober Giraffe</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: Arial;
-    background: #F5EFE6;
-    text-align: center;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #111;
+  text-align: center;
 }
 
-/* HEADER */
+.top-bar {
+  background: #b8ff00;
+  color: #000;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 8px;
+}
+
 header {
-    background: black;
-    color: white;
-    padding: 20px;
+  background: #fff;
+  padding: 22px 20px;
+  border-bottom: 1px solid #eee;
 }
 
-h1 {
-    margin: 0;
-    font-size: 2.5em;
+.logo-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 105px;
+  border-radius: 50%;
+  box-shadow: 0 0 18px #b8ff00;
+}
+
+.brand-text h1 {
+  margin: 0;
+  font-size: clamp(2.3rem, 8vw, 4.5rem);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
+.brand-text span {
+  color: #7ed900;
 }
 
 .tagline {
-    color: silver;
-    margin-top: 10px;
+  margin-top: 5px;
+  font-size: 1rem;
+  color: #333;
 }
 
-/* PRODUCTS */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  padding: 16px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+nav a {
+  text-decoration: none;
+  color: #111;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #8ee600;
+}
+
+.hero {
+  background:
+    linear-gradient(rgba(255,255,255,.65), rgba(255,255,255,.75)),
+    radial-gradient(circle at 15% 20%, #dff7ff 0%, transparent 35%),
+    radial-gradient(circle at 85% 20%, #e9ffd1 0%, transparent 35%),
+    #fffaf2;
+  padding: 60px 20px;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.hero-text {
+  text-align: left;
+}
+
+.hero h2 {
+  font-size: clamp(2.2rem, 8vw, 4.4rem);
+  line-height: 1.05;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.neon {
+  color: #92e600;
+  text-shadow: 0 0 8px rgba(146,230,0,.45);
+}
+
+.hero p {
+  font-size: 1.15rem;
+}
+
+.hero-btn {
+  display: inline-block;
+  margin-top: 15px;
+  background: #000;
+  color: #b8ff00;
+  padding: 14px 34px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 14px rgba(184,255,0,.45);
+}
+
+.hero-btn:hover {
+  background: #b8ff00;
+  color: #000;
+}
+
+.jar-display {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 14px;
+  min-height: 280px;
+}
+
+.jar {
+  width: 145px;
+  height: 170px;
+  border: 3px solid #111;
+  border-radius: 18px 18px 35px 35px;
+  background: rgba(255,255,255,.7);
+  position: relative;
+  box-shadow: 0 12px 30px rgba(0,0,0,.15);
+}
+
+.jar.big {
+  width: 190px;
+  height: 225px;
+}
+
+.jar::before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: 12px;
+  right: 12px;
+  height: 28px;
+  background: #050505;
+  border-radius: 12px 12px 4px 4px;
+}
+
+.jar-logo {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #92e600;
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.jar.big .jar-logo {
+  width: 100px;
+  height: 100px;
+}
+
+.jar-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.icons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 35px auto;
+  padding: 0 20px;
+}
+
+.icon-box {
+  border-right: 1px solid #ddd;
+  padding: 10px;
+}
+
+.icon-box:last-child {
+  border-right: none;
+}
+
+.icon {
+  font-size: 2.4rem;
+  color: #8ee600;
+}
+
+.section {
+  padding: 55px 20px;
+}
+
+.section-title {
+  color: #77c900;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
 .products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
+  max-width: 1100px;
+  margin: 25px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
 }
 
 .product {
-    background: white;
-    margin: 15px;
-    padding: 15px;
-    border-radius: 15px;
-    width: 250px;
+  background: #fff;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.08);
+  border: 1px solid #f1f1f1;
 }
 
-/* BUTTONS */
-button, a {
-    display: block;
-    margin: 10px auto;
-    padding: 10px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: white;
+.product-jar {
+  height: 190px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  margin-bottom: 15px;
 }
 
-.paypal { background: #00d9ff; }
-.email { background: #ff2fb3; }
-
-/* SECTION */
-.section {
-    padding: 30px;
+.product .jar {
+  transform: scale(.78);
 }
 
-/* CHAT BUTTON */
-.chat {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #c8ff00;
-    padding: 12px;
-    border-radius: 20px;
-    text-decoration: none;
-    color: black;
+.product h3 {
+  text-transform: uppercase;
+  font-size: 1.35rem;
+  margin: 10px 0;
+}
+
+.product p {
+  color: #333;
+}
+
+.price {
+  font-size: 1.55rem;
+  font-weight: bold;
+  color: #111;
+}
+
+.btn {
+  display: block;
+  text-decoration: none;
+  margin: 10px auto;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  max-width: 240px;
+}
+
+.paypal {
+  background: #000;
+  color: #b8ff00;
+}
+
+.email {
+  background: #fff;
+  color: #ff2faf;
+  border: 2px solid #ff2faf;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+}
+
+.ingredients {
+  background: #f9fff1;
+}
+
+.ingredient-grid {
+  max-width: 950px;
+  margin: 25px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.ingredient {
+  background: white;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+.story {
+  background:
+    linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.88)),
+    radial-gradient(circle at left, #e3f7ff 0%, transparent 35%),
+    radial-gradient(circle at right, #ebffd1 0%, transparent 35%);
+}
+
+.story-box {
+  max-width: 900px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 35px;
+  align-items: center;
+  text-align: left;
+}
+
+.story-logo {
+  width: 210px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #b8ff00;
+}
+
+.order {
+  background: #111;
+  color: white;
+}
+
+.order .btn {
+  display: inline-block;
+  min-width: 220px;
+}
+
+footer {
+  background: #000;
+  color: white;
+  padding: 25px;
+  font-size: 14px;
+}
+
+.chat-help {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  background: #b8ff00;
+  color: #000;
+  padding: 14px 18px;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 0 22px rgba(184,255,0,.8);
+  z-index: 999;
+}
+
+@media (max-width: 800px) {
+  .hero-inner,
+  .products,
+  .ingredient-grid,
+  .story-box {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .icons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .icon-box {
+    border-right: none;
+  }
+
+  .jar-display {
+    transform: scale(.9);
+  }
 }
 </style>
 </head>
 
 <body>
 
+<div class="top-bar">
+  CLEAN • NON-TOXIC • GLASS JARS ONLY • REAL INGREDIENTS • REAL GLOW
+</div>
+
 <header>
-<h1>🦒 Sober Giraffe</h1>
-<div class="tagline">Sober skincare — not drunk on chemicals</div>
+  <div class="logo-row">
+    <img class="logo" src="Logo.png" alt="Sober Giraffe logo">
+    <div class="brand-text">
+      <h1>Sober <span>Giraffe</span></h1>
+      <div class="tagline">Sober skincare — not drunk on chemicals</div>
+    </div>
+  </div>
 </header>
 
-<div class="section">
-<h2>No chemicals. No plastic. Just real skincare.</h2>
-<p>Clean organic Wagyu Tallow, Vitamin E, and Marajuka honey.</p>
+<nav>
+  <a href="#shop">SHOP</a>
+  <a href="#ingredients">INGREDIENTS</a>
+  <a href="#story">OUR STORY</a>
+  <a href="#order">ORDER</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h2>No chemicals.<br>No plastic.<br><span class="neon">Just real skincare.</span></h2>
+      <p>Clean organic Wagyu Tallow, Vitamin E, and Marajuka honey.</p>
+      <a class="hero-btn" href="#shop">SHOP NOW</a>
+    </div>
+
+    <div class="jar-display">
+      <div class="jar">
+        <div class="jar-logo"><img src="Logo.png" alt="logo"></div>
+      </div>
+      <div class="jar big">
+        <div class="jar-logo"><img src="Logo.png" alt="logo"></div>
+      </div>
+      <div class="jar">
+        <div class="jar-logo"><img src="Logo.png" alt="logo"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="icons">
+  <div class="icon-box">
+    <div class="icon">🍃</div>
+    <strong>CLEAN</strong><br>INGREDIENTS
+  </div>
+  <div class="icon-box">
+    <div class="icon">⚗️</div>
+    <strong>NO</strong><br>CHEMICALS
+  </div>
+  <div class="icon-box">
+    <div class="icon">🌱</div>
+    <strong>NON</strong><br>TOXIC
+  </div>
+  <div class="icon-box">
+    <div class="icon">🫙</div>
+    <strong>GLASS</strong><br>JARS ONLY
+  </div>
 </div>
 
-<div class="products">
+<section id="shop" class="section">
+  <h2 class="section-title">Shop Sober Skincare</h2>
 
-<div class="product">
-<h3>Unscented Sober Cream</h3>
-<p>✔ Gentle ✔ No fragrance ✔ Non-greasy</p>
-<p>$18</p>
-<a class="paypal" href="https://paypal.me/dawnstratmann">Buy with PayPal</a>
-<a class="email" href="mailto:Clean.Sober.Giraffe.Tallow@proton.me">Email Order</a>
-</div>
+  <div class="products">
 
-<div class="product">
-<h3>Honeybee Glow</h3>
-<p>✔ Antibacterial ✔ Acne-friendly ✔ Glow</p>
-<p>$20</p>
-<a class="paypal" href="https://paypal.me/dawnstratmann">Buy with PayPal</a>
-<a class="email" href="mailto:Clean.Sober.Giraffe.Tallow@proton.me">Email Order</a>
-</div>
+    <div class="product">
+      <div class="product-jar">
+        <div class="jar">
+          <div class="jar-logo"><img src="Logo.png" alt="logo"></div>
+        </div>
+      </div>
+      <h3>Unscented Sober Cream</h3>
+      <p>✓ Gentle &nbsp; ✓ No fragrance &nbsp; ✓ Non-greasy</p>
+      <p class="price">$18</p>
+      <a class="btn paypal" href="https://paypal.me/dawnstratmann">BUY WITH PAYPAL</a>
+      <a class="btn email" href="mailto:Clean.Sober.Giraffe.Tallow@proton.me?subject=Unscented Sober Cream Order">EMAIL ORDER</a>
+    </div>
 
-<div class="product">
-<h3>Scented Cream</h3>
-<p>✔ Moisturizing ✔ Fun scent ✔ No grease</p>
-<p>$18</p>
-<a class="paypal" href="https://paypal.me/dawnstratmann">Buy with PayPal</a>
-<a class="email" href="mailto:Clean.Sober.Giraffe.Tallow@proton.me">Email Order</a>
-</div>
+    <div class="product">
+      <div class="product-jar">
+        <div class="jar">
+          <div class="jar-logo"><img src="Logo.png" alt="logo"></div>
+        </div>
+      </div>
+      <h3>Honeybee Glow</h3>
+      <p>Naturally antibacterial. Great for acne-prone skin.</p>
+      <p class="price">$20</p>
+      <a class="btn paypal" href="https://paypal.me/dawnstratmann">BUY WITH PAYPAL</a>
+      <a class="btn email" href="mailto:Clean.Sober.Giraffe.Tallow@proton.me?subject=Honeybee Glow Order">EMAIL ORDER</a>
+    </div>
 
-</div>
+    <div class="product">
+      <div class="product-jar">
+        <div class="jar">
+          <div class="jar-logo"><img src="Logo.png" alt="logo"></div>
+        </div>
+      </div>
+      <h3>Scented Sober Cream</h3>
+      <p>✓ Natural scent &nbsp; ✓ Moisturizing &nbsp; ✓ Non-greasy</p>
+      <p class="price">$18</p>
+      <a class="btn paypal" href="https://paypal.me/dawnstratmann">BUY WITH PAYPAL</a>
+      <a class="btn email" href="mailto:Clean.Sober.Giraffe.Tallow@proton.me?subject=Scented Sober Cream Order">EMAIL ORDER</a>
+    </div>
 
-<div class="section">
-<h2>Our Story</h2>
-<p>
-It started as a joke… “Who cares about Drunk Elephant? I want a Sober Giraffe.”
-And here we are.
-</p>
-</div>
+  </div>
+</section>
+
+<section id="ingredients" class="section ingredients">
+  <h2 class="section-title">What the Ingredients Do</h2>
+
+  <div class="ingredient-grid">
+    <div class="ingredient">
+      <h3>Wagyu Tallow</h3>
+      <p>Absorbs well into the skin and leaves a soft moisturized feel without heavy greasiness.</p>
+    </div>
+
+    <div class="ingredient">
+      <h3>Vitamin E Oil</h3>
+      <p>Helps support soft, conditioned, nourished-looking skin.</p>
+    </div>
+
+    <div class="ingredient">
+      <h3>Marajuka Honey</h3>
+      <p>Naturally antibacterial and helpful for acne-prone skincare routines.</p>
+    </div>
+  </div>
+</section>
+
+<section id="story" class="section story">
+  <div class="story-box">
+    <img class="story-logo" src="Logo.png" alt="Sober Giraffe logo">
+
+    <div>
+      <h2 class="section-title">Our Story</h2>
+      <h3>It started as a joke.</h3>
+      <p>
+        “Who needs Drunk Elephant? I want a Sober Giraffe.”
+        And somehow… that was it.
+      </p>
+      <p>
+        Now it’s real skincare made with real ingredients —
+        no chemicals, no plastic, just real glow.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="order" class="section order">
+  <h2>Order or Ask a Question</h2>
+  <p>Pay with PayPal, email us, or ask about local cash pickup.</p>
+
+  <a class="btn paypal" href="https://paypal.me/dawnstratmann">BUY WITH PAYPAL</a>
+  <a class="btn email" href="mailto:Clean.Sober.Giraffe.Tallow@proton.me?subject=Sober Giraffe Order or Question">EMAIL US</a>
+</section>
+
+<a class="chat-help" href="#order">Help Me Choose 💬</a>
 
 <footer>
-Sober Beauty Care</p>
+  <p><strong>Sober Giraffe</strong></p>
+  <p>No chemicals. No plastic. Just real skincare.</p>
+  <p>Clean.Sober.Giraffe.Tallow@proton.me</p>
 </footer>
 
-<!-- TIDIO CHAT -->
 <script src="//code.tidio.co/koanha41cndi8oii2nj0yvbpjcgdv8eu.js" async></script>
 
 </body>
